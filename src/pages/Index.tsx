@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { SearchBar } from '@/components/SearchBar';
 import { MovieGrid } from '@/components/MovieGrid';
 import { MediaDetails } from '@/components/MediaDetails';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface Movie {
   id: number;
@@ -64,16 +64,21 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-pink-900/20">
       <div className="container mx-auto px-4 py-8">
         {!selectedMedia ? (
           <>
+            {/* Header with Theme Toggle */}
+            <div className="flex justify-end mb-6">
+              <ThemeToggle />
+            </div>
+
             {/* Hero Section */}
             <div className="text-center mb-12">
               <h1 className="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-purple-500 bg-clip-text text-transparent mb-4">
                 LunaStream
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Discover and watch your favorite movies and TV shows
               </p>
               <SearchBar onSearch={handleSearch} isLoading={isLoading} />
@@ -90,10 +95,10 @@ const Index = () => {
             {searchResults.length === 0 && !isLoading && (
               <div className="text-center py-16">
                 <div className="text-6xl mb-4">🎬</div>
-                <h2 className="text-2xl font-semibold text-gray-700 mb-2">
+                <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Start your movie journey
                 </h2>
-                <p className="text-gray-500">
+                <p className="text-gray-500 dark:text-gray-400">
                   Search for any movie or TV show to get started
                 </p>
               </div>

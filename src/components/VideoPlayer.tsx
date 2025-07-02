@@ -28,7 +28,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       episodeSelector: 'true',
       autoplayNextEpisode: 'true',
       blockAds: 'true',
-      server: 'vidsrc' // Alternative server to avoid default
+      server: 'vidsrc'
     });
 
     if (mediaType === 'tv') {
@@ -53,14 +53,14 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <Button
           onClick={onBack}
           variant="ghost"
-          className="text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+          className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 dark:text-purple-400 dark:hover:text-purple-300 dark:hover:bg-purple-950/20"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Details
         </Button>
         
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
             {title}
             {mediaType === 'tv' && ` - S${season} E${episode}`}
           </h1>
@@ -69,7 +69,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <Button
           onClick={handleFullscreen}
           variant="outline"
-          className="border-purple-200 text-purple-600 hover:bg-purple-50"
+          className="border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950/20"
         >
           <Maximize2 className="h-4 w-4 mr-2" />
           Fullscreen
@@ -90,9 +90,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </div>
       </div>
 
-      <div className="mt-6 text-center text-gray-600">
+      <div className="mt-6 text-center text-gray-600 dark:text-gray-400">
         <p className="text-sm">
-          Powered by Videasy Player • {mediaType === 'movie' ? 'Movie' : `Season ${season}, Episode ${episode}`}
+          Powered by Videasy Player (vidsrc) • {mediaType === 'movie' ? 'Movie' : `Season ${season}, Episode ${episode}`}
         </p>
       </div>
     </div>

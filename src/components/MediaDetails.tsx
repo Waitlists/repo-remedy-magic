@@ -80,7 +80,7 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
       <Button
         onClick={onBack}
         variant="ghost"
-        className="mb-6 text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+        className="mb-6 text-purple-600 hover:text-purple-700 hover:bg-purple-50 dark:text-purple-400 dark:hover:text-purple-300 dark:hover:bg-purple-950/20"
       >
         <ArrowLeft className="h-4 w-4 mr-2" />
         Back to Search
@@ -89,7 +89,7 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Poster */}
         <div className="lg:col-span-1">
-          <Card className="overflow-hidden bg-white/80 backdrop-blur-sm border-white/50">
+          <Card className="overflow-hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-white/50 dark:border-gray-700/50">
             <img
               src={getImageUrl(media.poster_path)}
               alt={getTitle()}
@@ -100,14 +100,14 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
 
         {/* Details */}
         <div className="lg:col-span-2">
-          <Card className="bg-white/80 backdrop-blur-sm border-white/50">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-white/50 dark:border-gray-700/50">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div>
-                  <CardTitle className="text-3xl font-bold text-gray-800 mb-2">
+                  <CardTitle className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">
                     {getTitle()}
                   </CardTitle>
-                  <div className="flex items-center gap-4 text-gray-600 mb-4">
+                  <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400 mb-4">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
                       {getYear()}
@@ -124,7 +124,7 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 {media.overview || 'No description available.'}
               </p>
 
@@ -136,6 +136,7 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
                   selectedEpisode={selectedEpisode}
                   onSeasonChange={setSelectedSeason}
                   onEpisodeChange={setSelectedEpisode}
+                  mediaId={media.id}
                 />
               )}
 
