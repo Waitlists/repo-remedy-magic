@@ -1,4 +1,5 @@
-import React from 'react';More actions
+More actions
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Maximize2 } from 'lucide-react';
 
@@ -66,7 +67,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             {title}
             {mediaType === 'tv' && ` - S${season} E${episode}`}
           </h1>
-@@ -69,7 +69,7 @@
+        </div>
+
         <Button
           onClick={handleFullscreen}
           variant="outline"
@@ -75,7 +77,20 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         >
           <Maximize2 className="h-4 w-4 mr-2" />
           Fullscreen
-@@ -90,11 +90,11 @@
+        </Button>
+      </div>
+
+      <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl">
+        <div className="aspect-video">
+          <iframe
+            src={getVideoUrl()}
+            className="w-full h-full"
+            allowFullScreen
+            frameBorder="0"
+            title={`${title} Player`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-pointer-lock allow-orientation-lock allow-popups"
+          />
         </div>
       </div>
 
