@@ -21,20 +21,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   onBack,
 }) => {
   const getVideoUrl = () => {
-    const baseUrl = 'https://player.videasy.net';
-    const params = new URLSearchParams({
-      color: 'fbc9ff',
-      nextEpisode: 'true',
-      episodeSelector: 'true',
-      autoplayNextEpisode: 'true',
-      blockAds: 'true',
-      server: 'vidsrc'
-    });
-
     if (mediaType === 'tv') {
-      return `${baseUrl}/tv/${mediaId}/${season}/${episode}?${params.toString()}`;
+      return `https://vidsrc.to/embed/tv/${mediaId}/${season}/${episode}`;
     } else {
-      return `${baseUrl}/movie/${mediaId}?${params.toString()}`;
+      return `https://vidsrc.to/embed/movie/${mediaId}`;
     }
   };
 
@@ -92,7 +82,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
       <div className="mt-6 text-center text-gray-600 dark:text-gray-400">
         <p className="text-sm">
-          Powered by Videasy Player (vidsrc) • {mediaType === 'movie' ? 'Movie' : `Season ${season}, Episode ${episode}`}
+          Powered by VidSrc • {mediaType === 'movie' ? 'Movie' : `Season ${season}, Episode ${episode}`}
         </p>
       </div>
     </div>

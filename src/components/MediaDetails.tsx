@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Play, Star, Calendar, Clock, Globe } from 'lucide-react';
+import { ArrowLeft, Play, Star, Calendar } from 'lucide-react';
 import { VideoPlayer } from '@/components/VideoPlayer';
 import { EpisodeSelector } from '@/components/EpisodeSelector';
 import type { Movie } from '@/pages/Index';
@@ -59,6 +59,12 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
   }, [media]);
 
   const handlePlay = () => {
+    setShowPlayer(true);
+  };
+
+  const handleWatchEpisode = (season: number, episode: number) => {
+    setSelectedSeason(season);
+    setSelectedEpisode(episode);
     setShowPlayer(true);
   };
 
@@ -136,18 +142,22 @@ export const MediaDetails: React.FC<MediaDetailsProps> = ({ media, onBack }) => 
                   selectedEpisode={selectedEpisode}
                   onSeasonChange={setSelectedSeason}
                   onEpisodeChange={setSelectedEpisode}
+                  onWatchEpisode={handleWatchEpisode}
                   mediaId={media.id}
                 />
               )}
 
-              <Button
-                onClick={handlePlay}
-                size="lg"
-                className="bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105"
-              >
-                <Play className="h-5 w-5 mr-2" />
-                {media.media_type === 'tv' ? `Watch S${selectedSeason} E${selectedEpisode}` : 'Watch Movie'}
-              </Button>
+              {/* Watch Button for Movies */}
+              {media.media_type === 'movie' && (
+                <Button
+                  onClick={handlePlay}
+                  size="lg"
+                  className="bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 transform hover:scale-105"
+                >
+                  <Play className="h-5 w-5 mr-2" />
+                  Watch Movie
+                </Button>
+              )}
             </CardContent>
           </Card>
         </div>
